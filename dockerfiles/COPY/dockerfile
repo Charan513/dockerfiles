@@ -1,0 +1,19 @@
+
+
+# Use AlmaLinux 9 as the base image
+FROM almalinux:9         
+
+# Install Nginx using DNF package manager
+RUN dnf install nginx -y 
+
+# Remove the default index.html file to replace it with a custom one
+RUN rm -rf /usr/share/nginx/html/index.html
+
+# RUN dnf install nginx -y && rm -rf /usr/share/nginx/html/index.html
+
+
+# Copy the custom index.html file into the Nginx web root directory
+COPY index.html /usr/share/nginx/html/index.html
+
+# Set the default command to run Nginx in the foreground when the container starts
+CMD [ "nginx", "-g", "daemon off;" ]

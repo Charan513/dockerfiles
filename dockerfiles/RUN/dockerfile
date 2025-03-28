@@ -1,0 +1,7 @@
+
+
+# Use AlmaLinux 9 as the base image
+FROM almalinux:9         
+
+# Install Nginx using DNF package manager
+RUN dnf install nginx -y 
