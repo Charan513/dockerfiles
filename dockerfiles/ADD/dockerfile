@@ -21,6 +21,10 @@ ADD https://github.com/Charan513/dockerfiles/blob/main/dockerfiles/RUN/dockerfil
 
 # Give execute permission to index.html file
 RUN chmod +r /usr/share/nginx/html/index.html
+# RUN chmod 644 /usr/share/nginx/html/index.html
+
+# Extract the contents of sample-1.tar into the /tmp directory inside the container
+ADD sample-1.tar /tmp/
 
 # Set the default command to run Nginx in the foreground when the container starts
 CMD [ "nginx", "-g", "daemon off;" ]
