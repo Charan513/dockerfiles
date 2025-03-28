@@ -1,0 +1,24 @@
+
+
+# Use AlmaLinux 9 as the base image
+FROM almalinux:9         
+
+# Install Nginx using DNF package manager
+RUN dnf install nginx -y 
+
+# Remove the default index.html file to replace it with a custom one
+RUN rm -rf /usr/share/nginx/html/index.html
+
+# RUN dnf install nginx -y && rm -rf /usr/share/nginx/html/index.html
+
+
+# Download index.html from the specified GitHub URL and save it in the Nginx web root directory
+ADD https://github.com/Charan513/dockerfiles/blob/main/dockerfiles/RUN/dockerfile /usr/share/nginx/html/index.html
+
+
+# or we can use RUN Command along with curl command
+# RUN curl -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/Charan513/dockerfiles/main/dockerfiles/RUN/dockerfile
+
+
+# Set the default command to run Nginx in the foreground when the container starts
+CMD [ "nginx", "-g", "daemon off;" ]
