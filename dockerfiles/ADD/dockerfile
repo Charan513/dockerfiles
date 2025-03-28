@@ -19,6 +19,8 @@ ADD https://github.com/Charan513/dockerfiles/blob/main/dockerfiles/RUN/dockerfil
 # or we can use RUN Command along with curl command
 # RUN curl -o /usr/share/nginx/html/index.html https://raw.githubusercontent.com/Charan513/dockerfiles/main/dockerfiles/RUN/dockerfile
 
+# Give execute permission to index.html file
+RUN chmod +x /usr/share/nginx/html/index.html
 
 # Set the default command to run Nginx in the foreground when the container starts
 CMD [ "nginx", "-g", "daemon off;" ]
